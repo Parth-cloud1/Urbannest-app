@@ -1,0 +1,14 @@
+# Node
+node_modules/
+dist/
+
+# Parcel
+.parcel-cache/
+
+# Env
+.env
+
+# IDE & OS
+.DS_Store
+*.log
+*.swp
