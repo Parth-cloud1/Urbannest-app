@@ -1,0 +1,227 @@
+yamlopenapi: 3.0.3
+info:
+  title: UrbanNest API
+  description: Device rental kiosk management API
+  version: 1.0.0
+  contact:
+    name: UrbanNest Dev Team
+
+servers:
+  - url: https://wmyflwebdgqvzhdkcaal.supabase.co/rest/v1
+    description: Supabase REST API
+  - url: https://wmyflwebdgqvzhdkcaal.supabase.co/functions/v1
+    description: Supabase Edge Functions
+
+paths:
+  /fixtures/nearby:
+    get:
+      summary: Get nearby fixtures
+      description: Returns 5-10 closest fixtures based on GPS coordinates
+      parameters:
+        - name: lat
+          in: query
+          required: true
+          schema:
+            type: number
+            format: float
+          example: 25.2048
+        - name: lng
+          in: query
+          required: true
+          schema:
+            type: number
+            format: float
+          example: 55.2708
+      responses:
+        '200':
+          description: List of nearby fixtures
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Fixture'
+
+  /fixtures/{id}:
+    put:
+      summary: Update fixture (Admin only)
+      description: Update fixture details including location and devices
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FixtureUpdate'
+      responses:
+        '200':
+          description: Fixture updated successfully
+        '403':
+          description: Admin access required
+
+  /devices:
+    get:
+      summary: Get devices by fixture
+      parameters:
+        - name: fixture_id
+          in: query
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: List of devices grouped by category
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Device'
+
+  /bookings:
+    post:
+      summary: Create new booking
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BookingCreate'
+      responses:
+        '201':
+          description: Booking created with pending status
+        '400':
+          description: Device unavailable or invalid request
+
+  /bookings/{id}/return:
+    patch:
+      summary: Return rented device
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Device returned successfully
+        '404':
+          description: Booking not found
+
+/stripe/intent:
+    post:
+      summary: Create Stripe payment intent
+      description: Edge function to create payment intent for booking
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                booking_id:
+                  type: string
+                  format: uuid
+                amount:
+                  type: integer
+                  description: Amount in cents
+      responses:
+        '200':
+          description: Payment intent created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  client_secret:
+                    type: string
+
+  /iot/unlock:
+    post:
+      summary: Send unlock command to IoT device
+      description: Edge function to unlock cabinet door
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                fixture_id:
+                  type: string
+                  format: uuid
+                slot_no:
+                  type: integer
+      responses:
+        '200':
+          description: Unlock command sent successfully
+
+  /users/{id}:
+    get:
+      summary: Get user profile
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: User profile data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+
+  /users/{id}/bookings:
+    get:
+      summary: Get user's booking history
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: List of user's bookings
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Booking'
+
+components:
+  schemas:
+    Fixture:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        location:
+          type: object
+          properties:
+            lat:
+              type: number
+            lng:
+              type: number
+            address:
+              type: string
+        total_slots:
+          type: integer
+        available_devices:
+          type: integer
