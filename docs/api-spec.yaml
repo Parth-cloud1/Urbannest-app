@@ -144,7 +144,7 @@ paths:
                   client_secret:
                     type: string
 
-  /iot/unlock:
+    /iot/unlock:
     post:
       summary: Send unlock command to IoT device
       description: Edge function to unlock cabinet door
@@ -164,7 +164,7 @@ paths:
         '200':
           description: Unlock command sent successfully
 
-  /users/{id}:
+    /users/{id}:
     get:
       summary: Get user profile
       parameters:
@@ -182,7 +182,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/User'
 
-  /users/{id}/bookings:
+    /users/{id}/bookings:
     get:
       summary: Get user's booking history
       parameters:
