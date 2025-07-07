@@ -225,3 +225,87 @@ components:
           type: integer
         available_devices:
           type: integer
+
+  Device:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        category:
+          type: string
+          enum: [Entertainment, Cleaning, Tools, Electronics]
+        photo_url:
+          type: string
+        hourly_price:
+          type: number
+        status:
+          type: string
+          enum: [available, rented, maintenance]
+
+    BookingCreate:
+      type: object
+      properties:
+        device_id:
+          type: string
+          format: uuid
+        fixture_id:
+          type: string
+          format: uuid
+        duration_hours:
+          type: integer
+
+    Booking:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        user_id:
+          type: string
+          format: uuid
+        device_id:
+          type: string
+          format: uuid
+        fixture_id:
+          type: string
+          format: uuid
+        status:
+          type: string
+          enum: [pending, active, completed, cancelled]
+        created_at:
+          type: string
+          format: date-time
+        returned_at:
+          type: string
+          format: date-time
+
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        first_name:
+          type: string
+        last_name:
+          type: string
+        email:
+          type: string
+          format: email
+        phone:
+          type: string
+        role:
+          type: string
+          enum: [user, admin]
+
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+security:
+  - BearerAuth: []
