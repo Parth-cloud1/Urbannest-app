@@ -1,0 +1,137 @@
+[
+  {
+    "id": "device_1",
+    "name": "Smart Lock #1",
+    "category": "Smart Lock",
+    "fixture_id": "fixture_2",
+    "price_per_hour": 148,
+    "image_url": "/storage/images/device_1.png",
+    "status": "unavailable"
+  },
+  {
+    "id": "device_2",
+    "name": "Dryer #2",
+    "category": "Dryer",
+    "fixture_id": "fixture_1",
+    "price_per_hour": 92,
+    "image_url": "/storage/images/device_2.png",
+    "status": "available"
+  },
+  {
+    "id": "device_3",
+    "name": "Washer #3",
+    "category": "Washer",
+    "fixture_id": "fixture_3",
+    "price_per_hour": 89,
+    "image_url": "/storage/images/device_3.png",
+    "status": "unavailable"
+  },
+  {
+    "id": "device_4",
+    "name": "Washer #4",
+    "category": "Washer",
+    "fixture_id": "fixture_3",
+    "price_per_hour": 56,
+    "image_url": "/storage/images/device_4.png",
+    "status": "unavailable"
+  },
+  {
+    "id": "device_5",
+    "name": "Dryer #5",
+    "category": "Dryer",
+    "fixture_id": "fixture_3",
+    "price_per_hour": 66,
+    "image_url": "/storage/images/device_5.png",
+    "status": "unavailable"
+  },
+  {
+    "id": "device_6",
+    "name": "Smart Lock #6",
+    "category": "Smart Lock",
+    "fixture_id": "fixture_1",
+    "price_per_hour": 92,
+    "image_url": "/storage/images/device_6.png",
+    "status": "available"
+  },
+  {
+    "id": "device_7",
+    "name": "Washer #7",
+    "category": "Washer",
+    "fixture_id": "fixture_2",
+    "price_per_hour": 86,
+    "image_url": "/storage/images/device_7.png",
+    "status": "unavailable"
+  },
+  {
+    "id": "device_8",
+    "name": "Smart Lock #8",
+    "category": "Smart Lock",
+    "fixture_id": "fixture_2",
+    "price_per_hour": 69,
+    "image_url": "/storage/images/device_8.png",
+    "status": "unavailable"
+  },
+  {
+    "id": "device_9",
+    "name": "Smart Lock #9",
+    "category": "Smart Lock",
+    "fixture_id": "fixture_1",
+    "price_per_hour": 100,
+    "image_url": "/storage/images/device_9.png",
+    "status": "unavailable"
+  },
+  {
+    "id": "device_10",
+    "name": "Dryer #10",
+    "category": "Dryer",
+    "fixture_id": "fixture_3",
+    "price_per_hour": 146,
+    "image_url": "/storage/images/device_10.png",
+    "status": "available"
+  },
+  {
+    "id": "device_11",
+    "name": "Dryer #11",
+    "category": "Dryer",
+    "fixture_id": "fixture_2",
+    "price_per_hour": 110,
+    "image_url": "/storage/images/device_11.png",
+    "status": "available"
+  },
+  {
+    "id": "device_12",
+    "name": "Dryer #12",
+    "category": "Dryer",
+    "fixture_id": "fixture_1",
+    "price_per_hour": 89,
+    "image_url": "/storage/images/device_12.png",
+    "status": "available"
+  },
+  {
+    "id": "device_13",
+    "name": "Dryer #13",
+    "category": "Dryer",
+    "fixture_id": "fixture_3",
+    "price_per_hour": 86,
+    "image_url": "/storage/images/device_13.png",
+    "status": "available"
+  },
+  {
+    "id": "device_14",
+    "name": "Smart Lock #14",
+    "category": "Smart Lock",
+    "fixture_id": "fixture_3",
+    "price_per_hour": 139,
+    "image_url": "/storage/images/device_14.png",
+    "status": "unavailable"
+  },
+  {
+    "id": "device_15",
+    "name": "Smart Lock #15",
+    "category": "Smart Lock",
+    "fixture_id": "fixture_2",
+    "price_per_hour": 112,
+    "image_url": "/storage/images/device_15.png",
+    "status": "unavailable"
+  }
+]

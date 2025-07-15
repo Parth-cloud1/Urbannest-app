@@ -1,0 +1,1 @@
+{"devices": [{"id": "1", "name": "Smart Lock A", "status": "available"}]}

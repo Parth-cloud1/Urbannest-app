@@ -1,0 +1,17 @@
+[
+  {
+    "id": "fixture_1",
+    "location": "Building A, Floor 5",
+    "slots": 5
+  },
+  {
+    "id": "fixture_2",
+    "location": "Building B, Floor 4",
+    "slots": 5
+  },
+  {
+    "id": "fixture_3",
+    "location": "Building C, Floor 2",
+    "slots": 5
+  }
+]
